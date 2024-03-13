@@ -1,0 +1,22 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+#Name: Momtaj Hossain Mow
+#Topic: Lagrange Interpolation Formula
+#Last Updated: 11/01/2022
+
+#number of dataset
+n = 4
+x = [300, 304, 305, 307]
+y = [2.4771, 2.4829, 2.4843, 2.4871]
+#2.4786
+
+#input the value of interpolation
+value = 301
+p = 0
+for k in range(n):
+    l=1
+    for i in range(n):
+        if i != k:
+            l = l* (value - x[i])/(x[k]-x[i])
+    p = p + y[k]*l
+
+print('Value at {} is: {}'.format(value, round(p,6)))

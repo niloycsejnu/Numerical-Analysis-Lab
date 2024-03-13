@@ -1,0 +1,24 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+#Name: Momtaj Hossain Mow
+#Topic: Richardson Extrapolation Formula
+#Last Updated: 12/01/2022
+import math
+#centered finite difference with step size h at point x=a
+def D(Func, a,h):
+    return (Func(a+h) - Func(a-h)) / (2*h)
+
+#Richardson extrpolation method for numerical calculation of first derivative
+def Richardson_dif(func, a):
+    k = 9 #order of approximation
+    N = [[0 for i in range(k)] for j in range(k)]
+    for i in range(k):
+        N[i][0] = D (func, a, 1/(2**(i+1)) )
+    
+    for j in range(1,k):
+        for i in range(k-j):
+            N[i][j] = ((4**(j))*N[i+1][j-1]-N[i][j-1]) / (4**(j)-1)
+    return N[0][k-1]
+
+print('Numerical differentiation of Func = ln x at x=1.8')
+f = lambda x: math.log(x)
+print('%04.20f' %Richardson_dif(f, 1.8))

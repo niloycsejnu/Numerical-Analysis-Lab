@@ -1,0 +1,18 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+#Name: Momtaj Hossain Mow
+#Topic: Fixed Point Iteration
+#Last Updated: 11/01/2022
+def fixed_point(g, p0, tol, n):
+    i = 1
+    while i<= n:
+        p = g(p0)
+        print(format(i,'<4'), p0)
+        if abs(p-p0) < tol:
+            print('\nThe solution is: ', p,'\n')
+            return None
+        i = i+1
+        p0 = p
+    print('The method fails after {} iteration'.format(n))
+    return None
+g = lambda x: x - (x**3 + 4*x**2 - 10) / (3*x**2 + 8*x)
+fixed_point(g, 1.5, 10**(-5), 30)

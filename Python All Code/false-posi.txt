@@ -1,0 +1,31 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+#Name: Momtaj Hossain Mow
+#Topic: False Position Method
+#Last Updated: 11/01/2022
+def false_position(f, a, b, tol, n):
+    if f(a)*f(b)>=0:
+        print('False Position Method Fails')
+        return None
+    i = 1
+    FA = f(a)
+    print('step       a             b                x              f(x)')
+    print('------------------------------------------------------------')
+    while i<n:
+        x = a - (f(a)*(b-a)) / (f(b) - f(a))
+        FX = f(x)
+        print(format(i,'<4'), format(float(a),'<14.9f'), format(float(b),'<14.9f'), format(float(x),'14.9f'), format(float(FX),'14.9f'))
+        if FX==0 or abs(FX) < tol:
+            print('\nThe solution is: ',x,'\n')
+            return None
+        i = i+1
+        if FA*FX > 0:
+            a = x
+            FA = FX
+        else:
+            b = x
+    print('The method fails after {} iteration'.format(n))
+    return None
+
+f = lambda x: x**3 - 2*x - 5
+false_position(f, 2, 3, 10**(-4), 20)
+        

@@ -1,0 +1,29 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+#Name: Momtaj Hossain Mow
+#Topic: Bisection Method
+#Last Updated: 11/01/2022
+def bisection(f, a, b, tol, n):
+    if f(a)*f(b)>=0:
+        print('Bisection method fails')
+        return None
+    i = 1
+    FA = f(a)  
+    print('step       a              b              p            f(p)')
+    print('----------------------------------------------------------------')
+    while i<=n:
+        p = (a+b)/2
+        FP = f(p)
+        print(format(i,'<5'),format(float(a),'<14.9f'),format(float(b),'<14.9f'), format(float(p),'<14.9f'), format(float(FP),'<14.2e'))
+        if FP == 0 or abs(b-a)/2 < tol:
+            return print('\nThe solution is: ', p,'\n')
+        i = i+1
+        if FA*FP > 0:
+            a = p
+            FA = FP
+        else:
+            b = p
+    print('Method failed after {} iterations'.format(n))
+    return None
+
+f = lambda x: x**3 + 4*x**2 - 10
+bisection(f, 1, 2, 10**(-4), 20)

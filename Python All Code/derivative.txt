@@ -1,0 +1,32 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+import math
+f = lambda x: x*math.exp(x)
+df = lambda x: (x+1)*math.exp(x)
+h = 0.1
+x0= 2.0
+#Three point endpoint formula
+Df_x0 = (-3*round(f(x0),6) + 4*round(f(x0+h),6) - round(f(x0+2*h),6))/(2*h)
+print("By using three point endpoint formula,")
+print('The derivative of the function is: ', round(Df_x0,6))
+Error = round(df(x0),6) - round(Df_x0,6)
+print('Error = ',format(Error,'<12.5e'))
+print()
+
+#Three point midpoint formula
+Df_x0 = ( round(f(x0+h),6) - round(f(x0-h),6) )/(2*h)
+print("By using three point midpoint formula,") 
+print('The derivative of the function is: ', round(Df_x0,6))
+Error = round(df(x0),6) - round(Df_x0,6)
+print('Error = ',format(Error,'<12.5e'))
+print()
+
+#Five point midpoint formula
+Df_x0 = ( round(f(x0-2*h),6) - 8*round(f(x0-h),6) + 8*round(f(x0+h),6) - round(f(x0+2*h)))/(12*h)
+print('By using five point midpoint formula,')
+print('The derivative of the function is: ', round(Df_x0,6))
+Error = round(df(x0),6) - round(Df_x0,6)
+print('Error = ',format(Error,'<12.5e'))
+print()
+
+#Real Analytic output
+print('Analytic output ;',round(df(x0),6))

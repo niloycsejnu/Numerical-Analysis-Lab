@@ -1,0 +1,25 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+#Name: Momtaj Hossain Mow
+#Topic: Newton's Raphson Method
+#Last Updated: 11/01/2022
+import math 
+def newton_raphson(f, f1, p0, tol, n):
+    i = 1
+    while i <= n:
+        p = p0 - (f(p0)/f1(p0))
+        print(format(i,'<4'), p)
+        if abs(p-p0) < tol:
+            print('The solution is: ',p) 
+            return None
+        i = i+1
+        p0 = p
+    print('Method fails after {} iteration'.format(n))
+    return None
+"""
+f = lambda x: x*math.sin(x) + math.cos(x)
+f1 = lambda x: x*math.cos(x)
+newton_raphson(f, f1, math.pi, 10**(-5), 20)
+"""
+g = lambda x: x*math.exp(x) - 1
+g1 = lambda x: x*math.exp(x) + math.exp(x)
+newton_raphson(g, g1, 1, 10**(-5), 20)

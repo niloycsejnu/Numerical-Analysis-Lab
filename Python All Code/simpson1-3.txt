@@ -1,0 +1,29 @@
+84% of storage used … You can clean up space or get more storage for Drive, Gmail and Google Photos.
+# simpson's 1/3 rule
+# define function to integrate
+def f(x):
+    return 1 / (1 + x**2) 
+# implementing simpson's 1/3 rule
+def simpson13(x0, xn, n):
+    # calculating step size
+    h = (xn - x0)/n
+    # finding sum
+    integration = f(x0) + f(xn)
+ 
+    for i in range(1, n):
+        xi = x0 + i*h
+        if i % 2 == 0:
+            integration = integration + 2*f(xi)
+        else:
+            integration = integration + 4*f(xi)
+    # finding final integration value
+    integration = integration * h/3
+    return integration
+# Input section
+lower_limit = float(input("Enter lower limit of integration: "))    #lower-limit = 0
+upper_limit = float(input("Enter upper limit of integration: "))    #upper-limit = 1
+sub_interval = int(input("Enter number of sub intervals: "))        #interval = 99
+ 
+# call simpson13()method
+result = simpson13(lower_limit, upper_limit, sub_interval)          #ans = 0.783706
+print("Integration result by Simpson's 1/3 method is: %0.6f" % result)
